@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, FlatList, SafeAreaView, Alert } from 'react-native';
+import { StyleSheet, View, FlatList, SafeAreaView, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import React, {useState} from 'react';
 import Header from './components/Header';
 import Task from './components/Task';
@@ -27,20 +27,22 @@ export default function App() {
   } 
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Header/>
-      <View style={styles.content}>
-        <AddTask addTask={addTask}/>
-        <View style={styles.list}>
-          <FlatList
-            data = {tasks}
-            renderItem = {({item}) => (
-              <Task item={item} />
-            )}
-          />
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <SafeAreaView style={styles.container}>
+        <Header/>
+        <View style={styles.content}>
+          <AddTask addTask={addTask}/>
+          <View style={styles.list}>
+            <FlatList
+              data = {tasks}
+              renderItem = {({item}) => (
+                <Task item={item} />
+              )}
+            />
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </TouchableWithoutFeedback>          
   );
 }
 
