@@ -3,6 +3,9 @@ import { StyleSheet, Text, View, FlatList, SafeAreaView } from 'react-native';
 import React, {useState} from 'react';
 import Header from './components/Header';
 import Task from './components/Task';
+import AddTask from './components/AddTask';
+import 'react-native-get-random-values'; // npm i react-native-get-random-values
+import { v4 as uuidv4 } from 'uuid'; // befor import install >> npm i uuid
 
 export default function App() {
 
@@ -11,11 +14,19 @@ export default function App() {
     {"task":"Study for A/L", "done":true, "id":"2"},
     {"task":"Sleep at 12.00 p.m", "done":true, "id":"3"}
   ])
+ 
+ // npm i uuid << install that 
+  const addTask = (text) => {
+    setTasks(prevTasks => {
+      return [{task:text, id:uuidv4()}, ...prevTasks]
+    })
+  } 
 
   return (
     <SafeAreaView style={styles.container}>
       <Header/>
       <View style={styles.content}>
+        <AddTask addTask={addTask}/>
         <View style={styles.list}>
           <FlatList
             data = {tasks}
