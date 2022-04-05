@@ -1,11 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
+import React, {useState} from 'react';
 
 export default function App() {
+
+  const [tasks, setTasks] = useState([
+    {"task":"HTML", "done":true, "id":"1"},
+    {"task":"CSS", "done":true, "id":"2"},
+    {"task":"Java Script", "done":true, "id":"3"}
+  ])
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <View style={styles.content}>
+        <View style={styles.list}>
+          <FlatList
+            data = {tasks}
+            renderItem = {({item}) => (
+              <Text> {item.task} </Text>
+            )}
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -17,4 +33,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  content: {
+    padding: 30
+  },
+  list: {
+    marginTop: 30
+  }
 });
