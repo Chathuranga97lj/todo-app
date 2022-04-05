@@ -6,6 +6,7 @@ import Task from './components/Task';
 import AddTask from './components/AddTask';
 import 'react-native-get-random-values'; // npm i react-native-get-random-values
 import { v4 as uuidv4 } from 'uuid'; // befor import install >> npm i uuid
+import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 export default function App() {
 
@@ -59,9 +60,13 @@ const styles = StyleSheet.create({
     
   },
   content: {
-    padding: 30
+    padding: 30,
+    backgroundColor: 'lightgreen',
+    flex: 1 // add backgroud color to the bottom
   },
   list: {
-    marginTop: 30
+    marginTop: 30,
+    // backgroundColor: 'pink',
+    // flex: 1
   }
 });
