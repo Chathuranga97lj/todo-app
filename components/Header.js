@@ -5,14 +5,14 @@ import { StyleSheet, Text, View} from 'react-native';
 const Header = () => {
   return (
     <View style={styles.header}>
-        <Text style={styles.title}>Samadhi's Tasks</Text>    
+        <Text style={styles.title}>Todo App</Text>    
     </View>
   )
 }
 
 const styles = StyleSheet.create({
     header: {
-        paddingTop: 30,
+        paddingTop: 40,
         backgroundColor: "blue",
         height: 80
     },
